@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Dev Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+:root{
+--pink:#ff008c;
+--cyan:#00f7ff;
+--yellow:#ffe600;
+--bg:#0a0014;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:'Orbitron',sans-serif;
+background:
+linear-gradient(rgba(255,0,140,.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,247,255,.08) 1px, transparent 1px),
+var(--bg);
+background-size:40px 40px;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+h1{
+font-size:min(10vw,90px);
+margin:0;
+color:var(--pink);
+text-shadow:0 0 10px var(--pink),0 0 30px var(--pink);
+}
+
+.tagline{
+font-size:1.2rem;
+color:var(--cyan);
+margin-top:15px;
+text-shadow:0 0 10px var(--cyan);
+}
+
+.pixel-box{
+border:3px solid var(--cyan);
+box-shadow:0 0 15px var(--cyan);
+padding:25px;
+background:rgba(0,0,0,.4);
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:70px 20px;
+}
+
+.section-title{
+color:var(--yellow);
+text-shadow:0 0 12px var(--yellow);
+font-size:2rem;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(20,0,40,.8);
+border:2px solid var(--pink);
+padding:20px;
+transition:.25s;
+box-shadow:0 0 15px rgba(255,0,140,.3);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 25px var(--pink);
+}
+
+.card h3{
+color:var(--cyan);
+}
+
+/* ===== PROJECT DETAILS ===== */
+.project-details{
+max-height:0;
+opacity:0;
+overflow:hidden;
+margin-top:0;
+transform: translateY(-10px);
+transition: all 0.5s ease;
+}
+
+.project-details.open{
+max-height:2000px;
+opacity:1;
+margin-top:15px;
+transform: translateY(0);
+}
+
+.project-details img{
+width:100%;
+margin-top:10px;
+border-radius:6px;
+box-shadow:0 0 10px rgba(0,247,255,0.4);
+display:block;
+}
+
+.project-details .btn{
+display:block;
+width:fit-content;
+margin:20px auto 0 auto;
+text-align:center;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 18px;
+text-decoration:none;
+color:black;
+background:var(--yellow);
+font-weight:bold;
+}
+
+.in-progress-box{
+margin-top:15px;
+padding:12px 18px;
+border:2px dashed var(--cyan);
+color:var(--cyan);
+text-align:center;
+font-weight:bold;
+letter-spacing:2px;
+background:rgba(0,247,255,0.05);
+box-shadow:0 0 10px rgba(0,247,255,0.2);
+animation:pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow{
+0%{
+opacity:0.6;
+box-shadow:0 0 5px rgba(0,247,255,0.2);
+}
+50%{
+opacity:1;
+box-shadow:0 0 15px rgba(0,247,255,0.5);
+}
+100%{
+opacity:0.6;
+box-shadow:0 0 5px rgba(0,247,255,0.2);
+}
+}
+
+/* ===== SKILLS ===== */
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+padding:10px 16px;
+border:2px solid var(--yellow);
+color:var(--yellow);
+}
+
+/* ===== LINKS ===== */
+a{
+color: var(--cyan);
+text-decoration: none;
+transition: .2s;
+}
+
+a:hover{
+color: var(--pink);
+text-shadow: 0 0 10px var(--pink);
+}
+
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:40px;
+border-top:2px solid var(--pink);
+margin-top:60px;
+}
+
+/* scanlines */
+.scanline::before{
+content:'';
+position:fixed;
+inset:0;
+background:repeating-linear-gradient(
+to bottom,
+rgba(255,255,255,.03),
+rgba(255,255,255,.03) 1px,
+transparent 1px,
+transparent 3px
+);
+pointer-events:none;
+}
+</style>
+</head>
+
+<body class="scanline">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="pixel-box">
+    <h1>Ahmad Kisswani</h1>
+    <div class="tagline">Game Developer // Game Programmer</div>
+    <p>Building stylish gameplay experiences inspired by classic and indie games.</p>
+  </div>
+</div>
+
+<!-- PROFILE -->
+<section>
+<h2 class="section-title">PLAYER PROFILE</h2>
+<div class="pixel-box">
+<p>
+Computer Science graduate and aspiring game developer.
+Focused on Unity, gameplay programming, mechanics,
+AI systems, and player experiences.
+</p>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h2 class="section-title">MISSIONS COMPLETED</h2>
+
+<div class="projects">
+
+<!-- PLANE SIM -->
+<div class="card">
+<h3>SIMPLE PLANE SIMULATOR</h3>
+
+<p>A PC flight simulator built in Unity (C#).</p>
+
+<button class="btn" onclick="toggleProject('plane')">
+SHOW PROJECT
+</button>
+
+<div id="plane" class="project-details">
+
+<p>
+Implemented forward movement, controls, camera system,
+speed boost, collision detection, and split-screen multiplayer.
+</p>
+
+<img src="PlaneSimShottt.png">
+<img src="PlaneSimulatorMainMenu.png">
+<img src="PlaneSimulatorShots.png">
+<img src="PlaneSimShot.png">
+<img src="PlaneSimShots.png">
+
+<a href="https://auxinnn.itch.io/plane-simulator" target="_blank" class="btn">
+▶ START GAME
+</a>
+
+</div>
+</div>
+
+<!-- MEDIEVAL -->
+<div class="card">
+<h3>MEDIEVAL SURVIVAL (IN DEVELOPMENT)</h3>
+
+<button class="btn" onclick="toggleProject('medieval')">
+SHOW PROJECT
+</button>
+
+<div id="medieval" class="project-details">
+
+<p>
+A wave-based survival game where a knight defends a village
+against incoming enemies using melee combat and basic AI systems.
+</p>
+
+<div class="in-progress-box">
+  ⏳ IN DEVELOPMENT
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2 class="section-title">LOADOUT</h2>
+<div class="skills">
+<span class="skill">UNITY</span>
+<span class="skill">C#</span>
+<span class="skill">GAMEPLAY PROGRAMMING</span>
+<span class="skill">OOP</span>
+<span class="skill">GIT</span>
+<span class="skill">BASIC ENEMY AI</span>
+<span class="skill">PHYSICS & COLLISIONS</span>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2 class="section-title">CONTACT TERMINAL</h2>
+
+<a href="mailto:ahmadkisswani02@email.com" class="btn">EMAIL</a>
+<a href="https://github.com/AuXiNN" target="_blank" class="btn">GITHUB</a>
+<a href="https://www.linkedin.com/in/ahmad-kisswani-b376b225a/" target="_blank" class="btn">LINKEDIN</a>
+
+</section>
+
+<footer>
+PRESS START TO CONNECT
+</footer>
+
+<!-- SCRIPT -->
+<script>
+function toggleProject(id){
+  const all = document.querySelectorAll('.project-details');
+
+  all.forEach(p => {
+    if(p.id !== id){
+      p.classList.remove("open");
+    }
+  });
+
+  const target = document.getElementById(id);
+  target.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
